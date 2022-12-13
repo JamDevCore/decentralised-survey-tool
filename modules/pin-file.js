@@ -7,11 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 const pinFile = async (res, req, survey, type) => {
   try {
     const s3 = new S3({
-        endpoint:  process.env['4EVERLAND_ENDPOINT'],
+        endpoint:  process.env['EVERLAND_ENDPOINT'],
         signatureVersion: "v4",
         credentials: {
-          accessKeyId:  process.env['4EVERLAND_API'],
-          secretAccessKey:  process.env['4EVERLAND_API_SECRET'],
+          accessKeyId:  process.env['EVERLAND_API'],
+          secretAccessKey:  process.env['EVERLAND_API_SECRET'],
         },
         region: "us-west-2",
       });

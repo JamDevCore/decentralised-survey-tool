@@ -8,8 +8,8 @@ const getSurveyResponses = async (surveyId) => {
         endpoint:  process.env['4EVERLAND_ENDPOINT'],
         signatureVersion: "v4",
         credentials: {
-          accessKeyId:  process.env['4EVERLAND_API'],
-          secretAccessKey:  process.env['4EVERLAND_API_SECRET'],
+          accessKeyId:  process.env['EVERLAND_API'],
+          secretAccessKey:  process.env['EVERLAND_API_SECRET'],
         },
         region: "us-west-2",
       });
