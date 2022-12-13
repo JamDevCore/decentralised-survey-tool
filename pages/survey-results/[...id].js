@@ -10,8 +10,8 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
     const [responseHash, setResponseHash] = useState('');
     const parsedResults = JSON.parse(results)
     useEffect(() => {
-      console.log(parsedResults)
-    }, [])
+      console.log('Thanks for using my DecentSurvey tool fellow dev! Feedback and tips can be sent to hello@web3rockstars.io')
+  }, [])
     return (
         <>
         <div>
@@ -80,7 +80,6 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
         const response = await getSurveyResponses(survey.surveyId);
         surveyResults = response.results;
         hash = response.resultsHash
-        console.log(response)
     }
     return {
       props: {

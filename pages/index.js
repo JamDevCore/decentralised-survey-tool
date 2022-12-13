@@ -13,9 +13,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false)
     const [surveyUrl, setSurveyUrl] = useState()
     const [surveyId, setSurveyId] = useState()
-    useEffect(() => {
-        console.log(surveyUrl)
-    }, [surveyUrl])
+
     return (
         <>
         <div>

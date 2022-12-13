@@ -46,10 +46,4 @@ describe('Pin json data and retrieve hash', () => {
 })
 
 
-// const runTest = async () => {
-//     const pinnedFile = await pinFile({}, {}, data, 'survey')
-//     console.log(pinnedFile)
-// }
-
-// runTest()
 

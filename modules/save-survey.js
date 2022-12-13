@@ -17,7 +17,6 @@ export const saveSurvey = async (questions, setSurveyUrl, setSurveyId) =>  {
         const data = await axios.post('/api/save-new-survey', {
             survey: newSurvey,
         })
-      console.log('data', data)
       setSurveyUrl(data.data.hash)
       setSurveyId(data.data.surveyId)
       return;
