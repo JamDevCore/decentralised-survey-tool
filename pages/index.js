@@ -120,7 +120,7 @@ export default function Home() {
                     setLoading(false)
                 }
              }}>{loading && <FaSpinner className="my-auto mr-4 spinner"/>}{loading ? 'Saving' : 'Save & Send'}</button>
-             <p className="text-gray-400 text-center">Once you have completed your survey, simply save it by pressing the button above. You're survey link and results link will be generated. Remember to store these yourself and keep them for your reference </p>
+             <p className="text-gray-400 text-center">Once you have completed your survey, simply save it by pressing the button above. Your survey link and results link will be generated. Remember to store these yourself and keep them for your reference (if you lose it its gone!)</p>
             </div>
          </div>}
       
