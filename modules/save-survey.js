@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-export const saveSurvey = async (questions, setSurveyUrl) =>  {
+export const saveSurvey = async (questions, setSurveyUrl, setSurveyId) =>  {
     try {
         const newSurvey = {
-            "survey": {
                 "questions": questions.map(question => {
                     const newQuestion = question;
                     question.question = document.querySelector(`#question-${question._id}`).value;
@@ -14,13 +13,13 @@ export const saveSurvey = async (questions, setSurveyUrl) =>  {
                     })
                     return newQuestion;
                 })
-            }
         }
         const data = await axios.post('/api/save-new-survey', {
             survey: newSurvey,
         })
       console.log('data', data)
       setSurveyUrl(data.data.hash)
+      setSurveyId(data.data.surveyId)
       return;
     } catch (err) {
         console.log(err)

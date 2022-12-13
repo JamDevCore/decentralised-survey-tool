@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const checkNewSurvey =  (req, res) => {
   try {
     const {survey, userAddress} = req.body;
@@ -8,6 +10,8 @@ const checkNewSurvey =  (req, res) => {
     } else {
       // Check user owns NFT + if not limit to 5 questions
     }
+    // Assign new survey ID for bucket (can't use IPFS hash as its too long :(
+    survey.surveyId = uuidv4()
     return survey
   } catch (err) {
     return res.status(500).json({ message: 'An error occured' });

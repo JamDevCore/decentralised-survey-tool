@@ -1,16 +1,15 @@
+import { v4 as uuidv4 } from 'uuid';
 import rateLimit from '../../modules/api-rate-limit';
-import checkNewSurvey from '../../modules/check-new-survey'
 import pinFile from '../../modules/pin-file';
 
 export default async function handler(req, res) {
     try {
         await rateLimit(res, 10, 'CACHE_TOKEN') // 10 requests per minute
         if (req.method === 'POST') {
-            console.log(req.body)
-            const survey = await checkNewSurvey(req, res)
-            const data = await pinFile(req, res, survey, 'survey')
-            console.log(data, 'data', data?.hash)
-            res.status(200).json({ message: 'File succesfully save to IPFS', hash: data.hash, surveyId: data.surveyId });
+            const newResponse = req.body.response;
+            newResponse.response.responseId = uuidv4()
+            const data = await pinFile(req, res, newResponse, 'response')
+            res.status(200).json({ message: 'File succesfully save to IPFS', hash: data.hash });
         } else {
             res.status(404).json({ message: 'Incorrect method'})
         }
