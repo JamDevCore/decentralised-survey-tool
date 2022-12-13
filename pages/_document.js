@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+        <title>Decent Surveys</title>
         <link rel="shortcut icon" href="/robot-face.svg" />
         </Head>
         <body className="">
