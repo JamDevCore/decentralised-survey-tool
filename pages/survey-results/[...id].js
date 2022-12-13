@@ -24,7 +24,7 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
          <p>
             DecentSurveys are anonymous, decentralised surveys and questionnaires. We don't own any of this data. All responses are publically available via the hash on IPFS, a peer to peer file storage system.<span className="underline font-bold block my-4"> No email, no signup. Just surveys.</span>
             </p>
-            
+            <a className="text-indigo-500 text-center block" href="/">Build your own survey <span className="underline">here!</span></a>
             </div>
          <ul role="list" className="space-y-3 w-full md:w-1/2 mx-auto mt-16">
             {parsedResults && parsedResults?.responses.map((response) => (

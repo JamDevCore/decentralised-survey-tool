@@ -19,12 +19,12 @@ export default function TakeSurvey({ survey, surveyHash }) {
         <h1 className="text-3xl font-bold underline text-center my-4">
             {survey?.survey?.title || "DecentSurveys"}
          </h1>
-   
+      
          <div className="text-center w-full md:w-1/2 mx-auto mt-4">
          <p>
             DecentSurveys are anonymous, decentralised surveys and questionnaires. We don't own any of your data. All your responses will be posted to a public, peer to peer file storage system.<span className="underline font-bold block my-4"> Don't reveal any personal data.</span>
             </p>
-            
+            <a className="text-indigo-500 text-center block" href="/">Build your own survey <span className="underline">here!</span></a>
             </div>
             {!responseHash ?
              <div className="Survey flex flex-col align-center flex-start mx-auto p-4 w-full">
