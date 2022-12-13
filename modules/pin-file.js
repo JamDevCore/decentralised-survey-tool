@@ -18,7 +18,6 @@ const pinFile = async (res, req, survey, type) => {
     if(type === 'survey') {
         // Upload survey
         const keySurvey = uuidv4()
-        console.log('survey', survey)
         var buf = Buffer.from(JSON.stringify(survey));
         await s3.putObject({
             Bucket: "surveys",
@@ -32,13 +31,12 @@ const pinFile = async (res, req, survey, type) => {
 
         // Upload empty response file
         const buffer = Buffer.from(JSON.stringify({ responses: []}));
-        console.log('yolo', survey.surveyId)
+
         const blankResponses = await s3.putObject({
             Bucket: "responses",
             Key: survey.surveyId,
             Body: buffer,
           });
-          console.log(blankResponses)
         return { hash: data.Metadata['ipfs-hash'], surveyId: survey.surveyId }
 
     } else {

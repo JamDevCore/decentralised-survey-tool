@@ -21,7 +21,6 @@ export const saveResponses = async (questions, setResponseHash, surveyHash, surv
         const data = await axios.post('/api/save-new-response', {
             response: newResponse,
         })
-      console.log('data', data)
       setResponseHash(data.data.hash)
       return;
     } catch (err) {

@@ -10,7 +10,8 @@ export default function TakeSurvey({ survey, surveyHash }) {
     const [loading, setLoading] = useState(false)
     const parseSurvey = JSON.parse(survey);
     useEffect(() => {
-    }, [responseHash])
+        console.log('Thanks for using my DecentSurvey tool fellow dev! Feedback and tips can be sent to hello@web3rockstars.io')
+    }, [])
     return (
         <>
         <div>
