@@ -15,7 +15,7 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
     return (
         <>
         <div>
-        <main className="p-16">
+        <main className="px-2 py-16">
 
        <h1 className="text-3xl font-bold underline text-center my-4">
             {survey?.survey?.title || "DecentSurveys"}
@@ -27,13 +27,13 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
             <a className="text-indigo-500 text-center block" href="/">Build your own survey <span className="underline">here!</span></a>
             </div>
          <ul role="list" className="space-y-3 w-full md:w-1/2 mx-auto mt-16">
-            {parsedResults && parsedResults?.responses.map((response) => (
-              <li key={response._id} className="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
+            {parsedResults && parsedResults?.responses.map((response, index) => (
+              <li key={response.responseId} className="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
                 <ul>
                   <p className="text-xs">ID: {response.responseId}</p>
                   {response?.questions.map((q, i) => {
                     return (
-                      <li className={`py-4 ${i !== 0 && 'border-t border-gray-300'}`}>
+                      <li key={q._id} className={`py-4 ${i !== 0 && 'border-t border-gray-300'}`}>
                         <div>
                         <h4>{q.question}</h4>
                         </div>
@@ -41,7 +41,7 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
                           {q.choices.map(c => {
                             console.log(c)
                             return (
-                              <span className={`w-48 inline-flex items-center rounded-md my-2 ${c.answer ? 'bg-green-100 text-green-800' : 'bg-pink-100 text-pink-800'} px-2.5 py-0.5 text-sm font-medium mr-4`}>
+                              <span key={c._id} className={`w-full sm:w-48 inline-flex items-center rounded-md my-2 ${c.answer ? 'bg-green-100 text-green-800' : 'bg-pink-100 text-pink-800'} px-2.5 py-0.5 text-sm font-medium mr-4`}>
                               <p>{c.value} <span className="font-bold italic">{c.answer ? `: True` : ': False'}</span></p>
                             </span>
                             )

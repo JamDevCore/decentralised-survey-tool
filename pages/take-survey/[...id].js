@@ -15,7 +15,7 @@ export default function TakeSurvey({ survey, surveyHash }) {
     return (
         <>
         <div>
-        <main className="p-16">
+        <main className="px-2 py-16">
 
         <h1 className="text-3xl font-bold underline text-center my-4">
             {survey?.survey?.title || "DecentSurveys"}
@@ -39,10 +39,10 @@ export default function TakeSurvey({ survey, surveyHash }) {
                         <label className="text-base text-xl font-bold text-gray-900">{question.question}</label>
                         <p className="text-md text-gray-500">Question {i + 1 }</p>
                         <fieldset className="mt-4">
-                            <legend className="sr-only">Notification method</legend>
+                     
                             <div className="space-y-4">
                             {question?.choices && question.choices.map((choice, index) => (
-                               <fieldset className="border-t border-gray-200">
+                               <fieldset key={choice._id} className="border-t border-gray-200">
                                <legend className="sr-only">{choice.value}</legend>
                                <div className="">
                                  <div className="relative flex items-start py-4">

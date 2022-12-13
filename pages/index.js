@@ -13,7 +13,9 @@ export default function Home() {
     const [loading, setLoading] = useState(false)
     const [surveyUrl, setSurveyUrl] = useState()
     const [surveyId, setSurveyId] = useState()
-
+    useEffect(() => {
+        console.log('Thanks for using my DecentSurvey tool fellow dev! Feedback and tips can be sent to hello@web3rockstars.io')
+    }, [])
     return (
         <>
         <div>
@@ -32,13 +34,13 @@ export default function Home() {
             </div>
       
         </div>
-        <main className="p-4 w-full">
+        <main className="w-full p-4">
 
         {surveyUrl ? <div key={surveyUrl} className="w-full md:w-1/2 p-2 bg-indigo-600 flex flex-col w-full mx-auto rounded p-4 mt-8">
             <p className="text-white text-center text-smd my-1 flex justify-center"> Survey published! <FaCheck className="my-auto ml-2"/></p>
-            <p  className=" text-gray-200 text-center text-sm my-2">Take survey<a href={typeof window!== 'undefined' && document.location.href + 'take-survey/' + surveyUrl} id="survey-url" className="underline text-gray-200 text-center text-sm my-2"> {typeof window!== 'undefined' && document.location.href + 'take-survey/' + surveyUrl}</a></p>
-            <p className="text-gray-200 text-center text-sm mb-2 "> View results: <a id="survey-url" className="underline" href={typeof window!== 'undefined' && document.location.href + 'survey-results/' + surveyUrl}>{typeof window!== 'undefined' && document.location.href + 'survey-results/' + surveyUrl}</a></p>
-            <p  className="text-gray-200 text-center text-sm mb-4">ID: {surveyId}</p>
+            <p  className="text-gray-200 text-center text-sm my-2 break-words">Take survey<a href={typeof window!== 'undefined' && document.location.href + 'take-survey/' + surveyUrl} id="survey-url" className="underline text-gray-200 text-center text-sm my-2"> {typeof window!== 'undefined' && document.location.href + 'take-survey/' + surveyUrl}</a></p>
+            <p className="text-gray-200 text-center text-sm mb-2 break-words"> View results: <a id="survey-url" className="underline" href={typeof window!== 'undefined' && document.location.href + 'survey-results/' + surveyUrl}>{typeof window!== 'undefined' && document.location.href + 'survey-results/' + surveyUrl}</a></p>
+            <p  className="text-gray-200 text-center text-sm mb-4 break-words">ID: {surveyId}</p>
             <div className="flex justify-center">
             
                 <button className="bg-white text-gray-700 rounded px-4 p-1 mr-1 flex " onClick={() => copyToClipboard('survey-url')}>Copy  <FaCopy className="text-sm my-auto ml-2" /></button>
@@ -46,7 +48,7 @@ export default function Home() {
             
             </div>
         </div> : 
-         <div className="Survey flex flex-col align-center flex-start p-4 w-full">
+         <div className="Survey flex flex-col align-center flex-start w-full">
             <div className="SurveyQuestion w-full md:w-1/2 mx-auto">
             <ul className="flex flex-col">{questions.map((question) => {
                 return (
