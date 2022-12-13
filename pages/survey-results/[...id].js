@@ -37,12 +37,12 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
                         <div>
                         <h4>{q.question}</h4>
                         </div>
-                        <div className="flex mt-2">
+                        <div className="flex mt-2 flex-wrap w-full">
                           {q.choices.map(c => {
                             console.log(c)
                             return (
-                              <span className={`inline-flex items-center rounded-md ${c.answer ? 'bg-green-100 text-green-800' : 'bg-pink-100 text-pink-800'} px-2.5 py-0.5 text-sm font-medium mr-4`}>
-                              <p>{c.value} {c.answer ? `: True` : ': False'}</p>
+                              <span className={`w-48 inline-flex items-center rounded-md my-2 ${c.answer ? 'bg-green-100 text-green-800' : 'bg-pink-100 text-pink-800'} px-2.5 py-0.5 text-sm font-medium mr-4`}>
+                              <p>{c.value} <span className="font-bold italic">{c.answer ? `: True` : ': False'}</span></p>
                             </span>
                             )
 
