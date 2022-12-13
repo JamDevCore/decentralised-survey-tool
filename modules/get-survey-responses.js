@@ -5,7 +5,7 @@ import axios from 'axios';
 const getSurveyResponses = async (surveyId) => {
     try {
     const s3 = new S3({
-        endpoint:  process.env['4EVERLAND_ENDPOINT'],
+        endpoint:  process.env['EVERLAND_ENDPOINT'],
         signatureVersion: "v4",
         credentials: {
           accessKeyId:  process.env['EVERLAND_API'],
