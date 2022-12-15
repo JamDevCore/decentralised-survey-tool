@@ -39,7 +39,7 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
                         </div>
                         <div className="flex mt-2 flex-wrap w-full">
                           {q.choices.map(c => {
-                            console.log(c)
+              
                             return (
                               <span key={c._id} className={`w-full sm:w-48 inline-flex items-center rounded-md my-2 ${c.answer ? 'bg-green-100 text-green-800' : 'bg-pink-100 text-pink-800'} px-2.5 py-0.5 text-sm font-medium mr-4`}>
                               <p>{c.value} <span className="font-bold italic">{c.answer ? `: True` : ': False'}</span></p>
@@ -75,11 +75,15 @@ export default function TakeSurvey({ survey, surveyHash , results, surveyId, res
     let surveyResults = {};
     let hash = '';
     if(surveyHash) {
-        const data = await axios.get(`https://${surveyHash}.ipfs.4everland.io`)
-        survey = data.data;
-        const response = await getSurveyResponses(survey.surveyId);
-        surveyResults = response.results;
-        hash = response.resultsHash
+    
+        let res = await fetch(`https://${surveyHash}.ipfs.4everland.io`);
+        if (res.ok) { // if HTTP-status is 200-299
+          // get the response body (the method explained below)
+          survey = await res.json();
+          const response = await getSurveyResponses(survey.surveyId);
+          surveyResults = response.results;
+          hash = response.resultsHash
+      }
     }
     return {
       props: {

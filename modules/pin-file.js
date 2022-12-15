@@ -53,9 +53,14 @@ const pinFile = async (res, req, survey, type) => {
             Bucket: "responses",
             Key: survey.response.surveyId
         });
-        const allData = await axios.get(`https://${responseData.Metadata['ipfs-hash']}.ipfs.4everland.io`)
-        const responses = allData.data;
-        responses.responses = responses.responses.concat(survey.response);
+        let allData = await fetch(`https://${responseData.Metadata['ipfs-hash']}.ipfs.4everland.io`);
+        let responses;
+        if (allData.ok) { // if HTTP-status is 200-299
+          responses = await allData.json();
+          responses.responses = responses.responses.concat(survey.response);
+      }
+       
+
 
         var buf = Buffer.from(JSON.stringify(responses));
         await s3.deleteObject({

@@ -124,16 +124,23 @@ export default function TakeSurvey({ survey, surveyHash }) {
     )
   }
   export async function getServerSideProps(context) {
-    const hash = context?.params?.id[0];
-    let survey = {};
-    if(hash) {
-        const data = await axios.get(`https://${hash}.ipfs.4everland.io`)
-        survey = data.data;
+    try {
+      const hash = context?.params?.id[0];
+      let survey = {};
+      if(hash) {
+        let response = await fetch(`https://${hash}.ipfs.4everland.io`);
+        if (response.ok) { // if HTTP-status is 200-299
+          // get the response body (the method explained below)
+          survey = await response.json();
+      }
+      return {
+        props: {
+          survey: JSON.stringify(survey),
+          surveyHash: hash,
+        }, // will be passed to the page component as props
+      }
     }
-    return {
-      props: {
-        survey: JSON.stringify(survey),
-        surveyHash: hash,
-      }, // will be passed to the page component as props
+    } catch (err) {
+      console.log(err)
     }
   }

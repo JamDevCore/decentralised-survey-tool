@@ -17,8 +17,13 @@ const getSurveyResponses = async (surveyId) => {
         Bucket: "responses",
         Key: surveyId
     });
-    const json = await axios.get(`https://${data.Metadata['ipfs-hash']}.ipfs.4everland.io`)
-    return { results: json.data, resultsHash: data.Metadata['ipfs-hash'] }
+    let response = await fetch(`https://${data.Metadata['ipfs-hash']}.ipfs.4everland.io`);
+    if (response.ok) { // if HTTP-status is 200-299
+      // get the response body (the method explained below)
+      const json = await response.json();
+      return { results: json, resultsHash: data.Metadata['ipfs-hash'] }
+    }
+
     } catch(err) {
         console.log(err)
     }
